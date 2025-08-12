@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forest Fire Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="container mx-auto p-4">
+        <h1 class="text-3xl font-bold text-center mb-6">Forest Fire Prediction</h1>
+        <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold mb-4">Input Parameters</h2>
+            <form action="/predict" method="POST">
+                <div class="mb-4">
+                    <label for="temperature" class="block text-sm font-medium text-gray-700">Temperature (°C):</label>
+                    <input type="number" step="0.1" id="temperature" name="temperature" class="mt-1 p-2 w-full border rounded-md" required>
+                </div>
+                <div class="mb-4">
+                    <label for="rh" class="block text-sm font-medium text-gray-700">Relative Humidity (%):</label>
+                    <input type="number" step="0.1" id="rh" name="rh" class="mt-1 p-2 w-full border rounded-md" required>
+                </div>
+                <div class="mb-4">
+                    <label for="ws" class="block text-sm font-medium text-gray-700">Wind Speed (km/h):</label>
+                    <input type="number" step="0.1" id="ws" name="ws" class="mt-1 p-2 w-full border rounded-md" required>
+                </div>
+                <div class="mb-4">
+                    <label for="rain" class="block text-sm font-medium text-gray-700">Rain (mm):</label>
+                    <input type="number" step="0.1" id="rain" name="rain" class="mt-1 p-2 w-full border rounded-md" required>
+                </div>
+                <div class="mb-4">
+                    <label for="ffmc" class="block text-sm font-medium text-gray-700">FFMC:</label>
+                    <input type="number" step="0.1" id="ffmc" name="ffmc" class="mt-1 p-2 w-full border rounded-md" required>
+                </div>
+                <div class="mb-4">
+                    <label for="dmc" class="block text-sm font-medium text-gray-700">DMC:</label>
+                    <input type="number" step="0.1" id="dmc" name="dmc" class="mt-1 p-2 w-full border rounded-md" required>
+                </div>
+                <div class="mb-4">
+                    <label for="isi" class="block text-sm font-medium text-gray-700">ISI:</label>
+                    <input type="number" step="0.1" id="isi" name="isi" class="mt-1 p-2 w-full border rounded-md" required>
+                </div>
+                <div class="mb-4">
+                    <label for="classes" class="block text-sm font-medium text-gray-700">Classes (0 or 1):</label>
+                    <input type="number" step="1" id="classes" name="classes" class="mt-1 p-2 w-full border rounded-md" required>
+                </div>
+                <div class="mb-4">
+                    <label for="region" class="block text-sm font-medium text-gray-700">Region (0 or 1):</label>
+                    <input type="number" step="1" id="region" name="region" class="mt-1 p-2 w-full border rounded-md" required>
+                </div>
+                <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600">Predict</button>
+            </form>
+        </div>
+        {% if prediction %}
+        <div class="mt-6 text-center">
+            <p class="text-lg font-medium">Prediction: {{ prediction }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
